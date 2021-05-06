@@ -6,26 +6,9 @@ import java.sql.Statement;
 
 public class db_connect {
 
-    public String username;
-    public String password;
     static Connection cont;
     static Statement stmt;
-
-    public void setUserName(String username) {
-        this.username = username;
-    }
-
-    public void setPass(String password) {
-        this.password = password;
-    }
-
-    public String getUserName() {
-        return username;
-    }
-
-    public String getPass() {
-        return password;
-    }
+    
 
     public db_connect() throws Exception {
         baglantiAc();

@@ -1,16 +1,18 @@
 
 import java.io.Serializable;
+import java.sql.ResultSet;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
 
-public class do_login implements Serializable {
+public class do_login extends db_connect implements Serializable {
 
     String userName;
 
-    public do_login() {
+    public do_login() throws Exception {
+        super();
     }
 
     public String getUserName() {
@@ -30,18 +32,24 @@ public class do_login implements Serializable {
     }
     String pass;
 
-    public String loginn() {
-        if (this.userName.equals("eha") && this.pass.equals("eha123")) {
-            return "Home.xhtml";
-        } else {
-            return "do_login.xhtml";
+    public String loginn() throws Exception {
+        String query = "SELECT  username, password FROM USERS";
+        ResultSet rs = stmt.executeQuery(query);
+        if (rs.next()) {
+            if (this.getPass().equals(rs.getString("password"))) {
+                if (this.getUserName().equals(rs.getString("username"))) {
+                    return "Home.xhtml";
+                }
+            }
         }
+        return "index.xhtml";
     }
 
     public String save() {
-
         return "do_save.xhtml";
-
     }
 
+    public String back_index() {
+        return "index.xhtml";
+    }
 }

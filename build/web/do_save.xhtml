@@ -1,40 +1,33 @@
-<html xmlns="https://www.w3.org/1999/xhtml"
-	xmlns:h="https://java.sun.com/jsf/html">
-<h:head>
-	<title>Adding a Form</title>
-</h:head>
-<h:body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-	<h:form>
-		<h3>Adding Form Components</h3>
-		<h:panelGrid columns="3">
-			<h:outputLabel for="cname">Car Name:</h:outputLabel>
-			<h:inputText value="#{car.cname}" id="cname"></h:inputText>
-			<br/>
-			<br/>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body style="background:#ffe074;padding-left: 38%;padding-top: 8%">
+        <h:panelGrid style="background-color:#bad5ff;height: 450px;text-align:center;width:350px">
+            <h:form>  
+                <h1>Save Page </h1>
 
-			<h:outputLabel for="Id">Car Id:</h:outputLabel>
-			<h:inputText value="#{car.id}"></h:inputText>
-			<br/>
-			<br/>
+                <h:outputLabel for="firstname" value="First Name :"/>  
+                <h:inputText id="firstname" value="#{do_save.firstname}">  
+                </h:inputText><br/><br/>
 
-			<h:outputLabel for="color">Color:</h:outputLabel>
-			<h:inputText value="#{car.color}"></h:inputText>
-			<br/>
-			<br/>
+                <h:outputLabel for="nickname" value="Nick Name :"/>  
+                <h:inputText id="nickname" value="#{do_save.nickname}">  
+                </h:inputText><br/><br/>
 
-			<h:outputLabel for="model">Model:</h:outputLabel>
-			<h:inputText value="#{car.model}"></h:inputText>
-			<br/>
-			<br/>
+                <h:outputLabel for="username" value="Username :"/>  
+                <h:inputText id="username" value="#{do_save.username}">  
+                </h:inputText><br/><br/>
 
-			<h:outputLabel for="regno">Registration Number:</h:outputLabel>
-			<h:inputText value="#{car.regno}"></h:inputText>
-			<br/>
-			<br/>
-			<h:commandButton action="viewdetails" value="Submit"></h:commandButton>
+                <h:outputLabel for="password" value="Password   :"/>  
+                <h:inputSecret id="password" value="#{do_save.password}" >  
+                </h:inputSecret><br/><br/> 
 
-		</h:panelGrid>
-	</h:form>
-</h:body>
+                <h:commandButton action="#{do_login.back_index()}" style="width: 100px;height: 30px" value="back"/> 
+                <h:commandButton action="#{do_save.save()}" style="width: 100px;height: 30px" value="save"/> 
+            </h:form>  
+        </h:panelGrid>
+    </h:body>
 </html>
