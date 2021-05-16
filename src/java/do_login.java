@@ -1,8 +1,17 @@
 
 import java.io.Serializable;
 import java.sql.ResultSet;
-import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.SessionScoped;
+
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -42,7 +51,7 @@ public class do_login extends db_connect implements Serializable {
                 }
             }
         }
-        return "index.xhtml";
+        return "Home.xhtml";
     }
 
     public String save() {

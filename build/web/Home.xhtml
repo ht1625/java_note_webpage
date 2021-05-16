@@ -1,12 +1,210 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"  
-xmlns:h="http://xmlns.jcp.org/jsf/html">  
-<h:head>  
-<title>Response Page</title>  
-</h:head>  
-<h:body>  
-<h1><h:outputText value="Hello #{do_login.userName}"/></h1>
-<h:outputText value="Your Record has been Saved Successfully!"/>  
-</h:body>  
-</html> 
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+
+      >
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></link>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+        <style>
+            body {font-family: "Lato", sans-serif;}
+
+            .sidebar {
+                height: 100%;
+                width: 50px;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: #111;
+                overflow-x: hidden;
+                padding-top: 16px;
+            }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+            }
+
+            .sidebar a:hover {
+                color: #f1f1f1;
+            }
+
+            .main {
+                margin-left: 165px; /* Same as the width of the sidenav */
+                padding: 0px 10px;
+            }
+
+            @media screen and (max-height: 450px) {
+                .sidebar {padding-top: 15px;}
+                .sidebar a {font-size: 18px;}
+            }
+            .card-big-shadow {
+                max-width: 200px;
+                max-height: 250px;
+                position: relative;
+            }
+
+            .card {
+                margin-top: 45px;
+                border-radius: 8px;
+                box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+                background-color: #FFFFFF;
+                color: #252422;
+                margin-bottom: 20px;
+                position: relative;
+                z-index: 1;
+            }
+            .card.card-just-text .content {
+                padding: 40px 45px;
+                text-align: center;
+            }
+            .card .content {
+                padding: 30px 30px 30px 30px;
+            }
+            .card[data-color="blue"] .category {
+                color: #7a9e9f;
+            }
+
+            .card .category, .card .label {
+                font-size: 7px;
+                margin-bottom: 20px;
+            }
+            .card-big-shadow:before {
+                background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
+                background-position: center bottom;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                bottom: -32%;
+                content: "";
+                display: block;
+                left: -15%;
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: 0;
+            }
+            .card .description {
+                font-size: 12px;
+                color: #66615b;
+            }
+            .content-card{
+                margin-top:20px;    
+            }
+
+            .card[data-color="brown"] {
+                background: #d6c1ab;
+            }
+            .card[data-color="brown"] .description {
+                color: #75442e;
+            }
+            .card[data-color="brown"] .category {
+                color: #a47e65;
+            }
+        </style>
+    </head>
+
+    <h:body style="background-color:#F5F5DC">
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
+            </ui:insert>
+        </div>
+
+        <div style="width:300px;height: 100%;position: fixed;
+             z-index: 1;
+             top: 0;
+             right: 0; background-color: #F5F5DC;margin-bottom: 15px;
+             padding: 4px 12px;border-right:  6px solid #66615b;padding-right: 40px">
+             <br></br>
+            <p style="padding:4%;background-color:#818181;text-align:center">
+
+                <a href="#home" style="color:white"><i class="fa fa-fw fa-home"></i>Anasayfa</a>
+                <a href="#services" style="color:white"><i class="fa fa-fw fa-wrench"></i>Hesap</a>
+
+            </p>
+            <br></br>
+            <div class="md-form" >
+                <i class="fas fa-pencil-alt prefix"></i>
+                <textarea id="form10" class="md-textarea form-control" rows="3" style="width:250px;padding-left: 30px;height: 350px" placeholder="Karalama defteri..."></textarea>
+
+            </div>
+
+        </div>
+
+        <div class="conteiner-fluid" style="width:1040px;height: 1000px;padding-left:120px ">
+
+            <div class="row col-12">
+
+                <div class="col-md-4 col-sm-6 content-card">
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="brown" data-radius="none">
+                            <div class="content">
+                                <h6 class="category">Best cards</h6>
+                                <h4 class="title"><a href="#">Brown Card</a></h4>
+                                <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 content-card">
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="brown" data-radius="none">
+                            <div class="content">
+                                <h6 class="category">Best cards</h6>
+                                <h4 class="title"><a href="#">Brown Card</a></h4>
+                                <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 content-card" >
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="brown" data-radius="none">
+                            <div class="content">
+                                <h6 class="category">Best cards</h6>
+                                <h4 class="title"><a href="#">Brown Card</a></h4>
+                                <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 content-card" >
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="brown" data-radius="none">
+                            <div class="content">
+                                <h6 class="category">Best cards</h6>
+                                <h4 class="title"><a href="#">Brown Card</a></h4>
+                                <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 content-card" >
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="brown" data-radius="none">
+                            <div class="content">
+                                <h6 class="category">Best cards</h6>
+                                <h4 class="title"><a href="#">Brown Card</a></h4>
+                                <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </h:body>
+</html>
