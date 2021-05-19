@@ -8,7 +8,7 @@ public class db_connect {
 
     static Connection cont;
     static Statement stmt;
-    
+
 
     public db_connect() throws Exception {
         baglantiAc();
@@ -27,4 +27,5 @@ public class db_connect {
         baglantiAc();
     }
 
+    
 }

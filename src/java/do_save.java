@@ -53,25 +53,17 @@ public class do_save extends db_connect implements Serializable {
         if (this.getFirstname().equals("") || this.getNickname().equals("") || this.getUsername().equals("") || this.getPassword().equals("")) {
             this.give_alert();
         } else {
-            boolean door=this.do_saving();
-            if(door){
-                this.do_it();
-            }
-            else{
-                this.give_alert();
-            }
+            this.do_saving();
         }
     }
 
-    public boolean do_saving() throws Exception {
+    public String do_saving() throws Exception {
         String query = "INSERT INTO USERS (firstname,nickname,username,password) VALUES ('" + this.getFirstname() + "','" + this.getNickname() + "','"
                 + this.getUsername() + "','" + this.getPassword() + "')";
         int num = stmt.executeUpdate(query);
-        if (num == 1) {
-            return true;
-        } else {
-            return false;
-        }
+
+            return "index.xhtml";
+        
     }
 
     public String give_alert() {

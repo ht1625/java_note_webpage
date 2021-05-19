@@ -137,36 +137,33 @@
                 left: 100%;
                 top: 0;
             }
-            
+
         </style>
     </h:head>
 
     <h:body style="background-color:#F5F5DC">
-        <h:panelGrid>
+
+        <!--
+         <h:dataTable> kullanıcıdan aldığın otları sırala burda 
+             <h:column><f:facet name = "header">Author ID</f:facet>
+             </h:column>
+             <h:column><f:facet name = "header">Name</f:facet>
+             </h:column            
+         </h:dataTable>
+        -->
 
 
-            <h:panelGrid id="header">
-                <ui:insert name="header">
-                    <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
-                </ui:insert>
-            </h:panelGrid>
-            
-            <!--
-             <h:dataTable> kullanıcıdan aldığın otları sırala burda 
-                 <h:column><f:facet name = "header">Author ID</f:facet>
-                 </h:column>
-                 <h:column><f:facet name = "header">Name</f:facet>
-                 </h:column            
-             </h:dataTable>
-            -->
-
-            <h:panelGrid id="header">
-                <ui:insert name="header" >
-                    <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
-                </ui:insert>
-            </h:panelGrid>
-
-
+        <h:panelGrid id="header">
+            <ui:insert name="header">
+                <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
+            </ui:insert>
+            <h:form style="padding-left:200px;padding-top: 60px">
+                <h:outputText value="#{get_data.genel_not}"></h:outputText>
+                <h:outputText value="#{do_login.userName}"></h:outputText>
+            </h:form>
+            <ui:insert name="header" >
+                <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
+            </ui:insert>
         </h:panelGrid>
 
 
