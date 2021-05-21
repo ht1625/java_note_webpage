@@ -1,31 +1,28 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 public class db_connect {
 
-    static Connection cont;
-    static Statement stmt;
+    final private String db_url = "jdbc:derby://localhost:1527/note";
+    //final private String class_url = "org.apache.derby.jdbc.ClientDriver";
+    final private String user = "eha";
+    final private String pass = "eha123";
+    public Connection connection = null;
+    public Statement stmt;
 
+    public Connection connect() {
 
-    public db_connect() throws Exception {
-        baglantiAc();
+        try {
+            // Class.forName(class_url).newInstance();;
+            connection = DriverManager.getConnection(db_url, user, pass);
+            stmt = connection.createStatement();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
 
-    public static void baglantiAc() throws Exception {
-        Class.forName("org.apache.derby.jdbc.ClientDriver");
-        cont = DriverManager.getConnection(
-                "jdbc:derby://localhost:1527/note;create=true",
-                "eha", "eha123");
-        stmt = cont.createStatement();
-    }
-
-    public static void again() throws Exception {
-        cont.close();
-        baglantiAc();
-    }
-
-    
 }

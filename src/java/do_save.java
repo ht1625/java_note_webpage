@@ -1,5 +1,6 @@
 
 import java.io.Serializable;
+import java.sql.Connection;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -58,9 +59,11 @@ public class do_save extends db_connect implements Serializable {
     }
 
     public String do_saving() throws Exception {
+        db_connect conn = new db_connect();
+        conn.connection=conn.connect();
         String query = "INSERT INTO USERS (firstname,nickname,username,password) VALUES ('" + this.getFirstname() + "','" + this.getNickname() + "','"
                 + this.getUsername() + "','" + this.getPassword() + "')";
-        int num = stmt.executeUpdate(query);
+        int num = conn.stmt.executeUpdate(query);
 
             return "index.xhtml";
         

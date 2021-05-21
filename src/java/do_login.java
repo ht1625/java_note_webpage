@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import javax.faces.bean.SessionScoped;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -16,7 +18,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 
-public class do_login extends db_connect implements Serializable {
+public class do_login implements Serializable {
 
     String userName;
     user_data users;
@@ -29,9 +31,8 @@ public class do_login extends db_connect implements Serializable {
         this.users = users;
     }
 
+    public do_login() {
 
-    public  do_login() throws Exception {
-        super();
         this.users = new user_data();
         user_data.user = this.users;
 
@@ -56,20 +57,18 @@ public class do_login extends db_connect implements Serializable {
 
     public String loginn() throws Exception {
 
-        String query = "SELECT id, username, password,firstname,nickname FROM USERS";
-        ResultSet rs = stmt.executeQuery(query);
+        db_connect conn = new db_connect();
+        conn.connection=conn.connect();
+
+        String query = "SELECT * FROM USERS WHERE USERNAME ='"+this.getUserName()+"' AND PASSWORD ='"+this.getPass()+"'";
+        ResultSet rs = conn.stmt.executeQuery(query);
         if (rs.next()) {
-            if (this.getPass().equals(rs.getString("password"))) {
-                if (this.getUserName().equals(rs.getString("username"))) {
                     int ide = rs.getInt("id");
                     this.users.user.setUser_id(ide);
                     this.users.user.setFirstname(rs.getString("firstname"));
                     this.users.user.setNickname(rs.getString("nickname"));
                     return "Home.xhtml";
                 }
-            }
-        }
-
         return "index.xhtml";
     }
 

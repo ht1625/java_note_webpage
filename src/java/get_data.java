@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.sql.Connection;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -15,7 +16,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 
-public class get_data extends db_connect implements Serializable {
+public class get_data  implements Serializable {
    
     
     public String getGenel_not() {
@@ -37,9 +38,7 @@ public class get_data extends db_connect implements Serializable {
     public String genel_not;
     public String title_genel_not;
 
-    public get_data() throws Exception {
-        super();
-    }
+    public get_data()  {}
 
     public void get_genel_note() throws Exception {
         if (!this.getGenel_not().equals("") && !this.getTitle_genel_not().equals("")) {
@@ -50,9 +49,13 @@ public class get_data extends db_connect implements Serializable {
     }
 
     public void save_genelnot() throws Exception {
+        
+        db_connect conn = new db_connect();
+        conn.connection=conn.connect();
+        
         String query = "INSERT INTO GENEL_NOT (user_id,title_not,content_not) VALUES (" + user_data.user.getUser_id() + ",'" + this.getTitle_genel_not() + "','"
                 + this.getGenel_not() +"')";
-        int num = stmt.executeUpdate(query);
+        int num = conn.stmt.executeUpdate(query);
         this.do_alert();
     }
 

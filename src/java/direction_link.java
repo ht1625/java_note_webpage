@@ -8,10 +8,9 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 @SessionScoped
 
-public class direction_link extends db_connect implements Serializable {
+public class direction_link implements Serializable {
 
-    direction_link() throws Exception {
-    }
+    direction_link() {}
 
     public String back_homepage() {
         return "Home.xhtml";
