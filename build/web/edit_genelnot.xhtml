@@ -8,7 +8,6 @@
 
       >
     <h:head>
-        <meta name="description" content="#{ELBean.pageDescription}"/>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -138,79 +137,36 @@
                 left: 100%;
                 top: 0;
             }
-            table {
-                max-width: 850px;
-                max-height:auto;
-                margin-top: 15px;
-            }
-            th, td {
-                text-align: left;
-                padding: 8px;
-            }
 
-            tr:nth-child(even){background-color: #EFE7CC}
-
-            th {
-                background-color:#BC8F8F;
-                color: white;
-            }
         </style>
     </h:head>
 
     <h:body style="background-color:#F5F5DC">
 
-        <h:panelGrid id="header">
-            <ui:insert name="header">
+
+        <h:form style="margin-left:180px;margin-top: 50px">
+            <h2>Title Note</h2>
+            <h:inputText value="#{sil_duzenle.upd_note.title}" id="inputTitle" style="width:300px" ></h:inputText> <br></br>
+            <h2>Content Note</h2> 
+            <h:inputTextarea value="#{sil_duzenle.upd_note.content}" id="inputContent" style="width:500px;height: 340px"></h:inputTextarea>
+            <h:commandButton value="Edit note" type="submit" action="#{sil_duzenle.do_upd_genel()}" style="margin-left: 20px"></h:commandButton>
+        </h:form>
+
+
+        <h:panelGrid>
+            <ui:insert>
                 <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
             </ui:insert>
+        </h:panelGrid>
 
 
-            <ui:insert name="header" >
+        <h:panelGrid>
+            <ui:insert>
                 <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
             </ui:insert>
         </h:panelGrid>
 
-        <h:panelGrid >
-            <table class="order-table" style="margin-right:400px;width: 100%;text-align: center;margin-left: 125px">
-
-                <tr>
-                    <th style="width:200px">
-                        <h2>Title Note</h2>
-                    </th>
-                    <th>
-                        <h2>Content Note</h2>
-                    </th>
-                </tr>
-
-                <ui:repeat var="o" value="#{pushdata_db.genelnot}" varStatus="status">
-
-                    <tr>
-                        <td>
-                            <h:outputText value="#{o.title}"></h:outputText> 
-                        </td>
-                        <td>
-                            <h:outputText value="#{o.content}"></h:outputText>
-                        </td>
-                        <h:form>
-                            <td style="width: 50px">
-                                <h:commandLink action="#{sil_duzenle.sil_note_genel(o.note_id)}" >Sil </h:commandLink>               
-                            </td>
-                        </h:form>
-                        <h:form>
-                            <td style="width: 50px">
-                                <h:commandLink action="#{sil_duzenle.upd_note_genel(o.note_id,o.title,o.content)}" >Düzenle</h:commandLink>   
-                            </td>
-                        </h:form>
-                    </tr>
-
-                </ui:repeat>
-
-            </table>
-        </h:panelGrid>
-
-
-
-
 
     </h:body>
 </html>
+
