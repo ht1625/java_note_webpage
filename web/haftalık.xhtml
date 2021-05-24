@@ -145,6 +145,14 @@
             }
 
         </style>
+
+        <script type="text/javascript">
+
+            function uyari() {
+                alert("Your Weekly Plan Created!");
+            }
+
+        </script>
     </h:head>
 
     <h:body style="background-color:#F5F5DC">
@@ -166,8 +174,10 @@
                 <label>Wednesday</label>
                 <label style="margin-left: 45px">Thursday</label>
                 <label style="margin-left: 90px">Friday</label>
-                <h:form>
-                    <h:inputTextarea  id="m"  value="#{haftalik_data.monday}" style="padding-left:10px;padding-right:10px ;margin-left: 90px ; border: none; background-color: #e6ffff;height: 280px;width: 185px;"></h:inputTextarea>
+
+
+                <h:form id="myForm">
+                    <h:inputTextarea id="m"  value="#{haftalik_data.monday}" style="padding-left:10px;padding-right:10px ;margin-left: 90px ; border: none; background-color: #e6ffff;height: 280px;width: 185px;"></h:inputTextarea>
 
                     <h:inputTextarea  id="t"  value="#{haftalik_data.tuesday}" style="padding-left:10px;padding-right:10px ;margin-left: 30px ; border: none; background-color: #e6ffff;height: 280px;width: 185px;"></h:inputTextarea>
 
@@ -176,17 +186,19 @@
                     <h:inputTextarea  id="th"  value="#{haftalik_data.thursday}" style="padding-left:10px;padding-right:10px ;margin-left: 30px ; border: none; background-color: #e6ffff;height: 280px;width: 185px;"></h:inputTextarea>
 
                     <h:inputTextarea   id="f" value="#{haftalik_data.friday}" style="padding-left:10px;padding-right:10px ;margin-left: 30px ; border: none; background-color: #e6ffff;height: 280px;width: 185px;"></h:inputTextarea>
-                </h:form>
 
-                <br></br>
+                    <br></br> 
+                    <label>Saturday</label>
+                    <label style="margin-left: 400px">Sunday</label>
+                    <br></br>
 
-                <label>Saturday</label>
-                <label style="margin-left: 400px">Sunday</label>
-                <h:form>
-                    <h:inputTextarea id="s" value="#{haftalik_data.saturday}" style="padding-left:10px;padding-right:10px ;margin-left: 90px ; border: none; background-color: #e6ffff;height: 180px;width: 500px;"></h:inputTextarea>
+
+                    <br></br>
+
+                    <h:inputTextarea id="s"  value="#{haftalik_data.saturday}" style="padding-left:10px;padding-right:10px ;margin-left: 90px ; border: none; background-color: #e6ffff;height: 180px;width: 500px;"></h:inputTextarea>
                     <h:inputTextarea id="su" value="#{haftalik_data.sunday}" style="padding-left:10px;padding-right:10px ;margin-left: 25px ; border: none; background-color: #e6ffff;height: 180px;width: 525px;"></h:inputTextarea>
                     <br></br>
-                    <h:commandButton value="Save" type="submit" action="#{haftalik_data.addWeeklyPlanner()}" style="height:30px; width:150px; padding-left:10px;padding-right:10px ;margin-left: 995px; background-color:#e6e6e6; border: none;" ></h:commandButton>
+                    <h:commandButton value="Save" type="submit" actionListener="#{haftalik_data.weekly()}" onclick="uyari()" style="height:30px; width:150px; padding-left:10px;padding-right:10px ;margin-left: 995px; background-color:#e6e6e6; border: none;" ></h:commandButton>
                 </h:form>
 
             </h:panelGrid>

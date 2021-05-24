@@ -1,19 +1,19 @@
 
+
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.Statement;
+import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
 
 @ManagedBean
 @SessionScoped
 
-
 public class haftalik_data extends db_connect implements Serializable {
-    
-       public haftalik_data() throws Exception {}
-    
+
+
+    public haftalik_data() throws Exception {
+    }
+
     public String monday;
     public String tuesday;
     public String wednesday;
@@ -77,49 +77,21 @@ public class haftalik_data extends db_connect implements Serializable {
     public void setSunday(String sunday) {
         this.sunday = sunday;
     }
-   
-    public void get_monday() throws Exception {
-        if (!this.getMonday().equals("")) {
+
+    public void weekly() throws SQLException, Exception {
         this.addWeeklyPlanner();
-        } 
     }
-    public void get_tuesday() throws Exception {
-        if (!this.getTuesday().equals("")) {
-        this.addWeeklyPlanner();
-        } 
-    }
-    public void get_wednesday() throws Exception {
-        if (!this.getWednesday().equals("")) {
-        this.addWeeklyPlanner();
-        } 
-    }
-    public void get_thursday() throws Exception {
-        if (!this.getThursday().equals("")) {
-        this.addWeeklyPlanner();
-        } 
-    }
-    public void get_friday() throws Exception {
-        if (!this.getFriday().equals("")) {
-        this.addWeeklyPlanner();
-        } 
-    }
-    
-    
-    public void get_saturday() throws Exception {
-        if (!this.getSaturday().equals("")) {
-        this.addWeeklyPlanner();
-        } 
-    }
-    public void get_sunday() throws Exception {
-        if (!this.getSunday().equals("")) {
-        this.addWeeklyPlanner();
-        } 
-    }
-      public void addWeeklyPlanner()throws Exception{
-         db_connect conn = new db_connect();
+
+    public void addWeeklyPlanner() throws Exception, SQLException {
+
+        db_connect conn = new db_connect();
         conn.connection=conn.connect();
-        
-       
-      }
-      
+
+        String query ="INSERT INTO EHA.WEEKLY_PLANNER (user_id ,monday, tuesday,wednesday,thursday,friday,saturday,sunday) VALUES (" +user_data.user.getUser_id()+ ",'"
+                + this.getMonday() + "','" + this.getTuesday() + "','" + this.getWednesday() + "','" + this.getThursday() + "','" + this.getFriday() + "','"
+                + this.getSaturday() + "','" + this.getSunday() +"')";
+        int num = conn.stmt.executeUpdate(query);
+  
+   }
+
 }
