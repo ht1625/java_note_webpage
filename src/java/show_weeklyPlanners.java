@@ -36,7 +36,7 @@ public class show_weeklyPlanners extends db_connect implements Serializable {
         db_connect conn = new db_connect();
         conn.connection = conn.connect();
 
-        String query = "SELECT weekly_id,monday,tuesday,wednesday,thuesday,friday,saturday,sunday FROM WEEKLY_PLANNER WHERE USER_ID = " + user_data.user.getUser_id();
+        String query = "SELECT weekly_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday FROM WEEKLY_PLANNER WHERE USER_ID = " + user_data.user.getUser_id();
         ResultSet rs = conn.stmt.executeQuery(query);
          while(rs.next()) {
              item.setWeekly_id(rs.getInt("weekly_id"));
@@ -52,7 +52,11 @@ public class show_weeklyPlanners extends db_connect implements Serializable {
             item=new data_weeklyPlanners();
         }
 
-        return "show_weeklyPlanners.xhtml";
+        return "show_weeklyPlanner.xhtml";
     }
+    
+     public int size(){
+       return this.weekly.size();
+   }
 
 }

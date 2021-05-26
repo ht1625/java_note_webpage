@@ -162,7 +162,10 @@
         </h:panelGrid>
 
         <h:panelGrid>   
-            <table class="order-table" ><ui:repeat value = "#{show_weeklyPlanners.weekly}" var = "week">
+            <table class="order-table" >
+                 <h:outputText value="sdawedwwdwqdewdweewfewfewewfwefewfewfwefwe"></h:outputText>
+                 <h:outputText value="#{show_weeklyPlanners.size()}"></h:outputText>
+                <ui:repeat value = "#{show_weeklyPlanners.weekly}" var = "week">
 
                 <h:column>    				
                     <f:facet name = "header">monday</f:facet>    				
@@ -177,9 +180,10 @@
                 <h:outputText value="#{week.friday}"></h:outputText>
                 <h:outputText value="#{week.saturday}"></h:outputText>
                 <h:outputText value="#{week.sunday}"></h:outputText>
-                <h:outputText value="sdawedwwdwqdewdweewfewfewewfwefewfewfwefwe"></h:outputText>
+               
              
-            </ui:repeat></table>
+            </ui:repeat>
+            </table>
             
         </h:panelGrid>
 
