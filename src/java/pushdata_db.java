@@ -56,7 +56,7 @@ public class pushdata_db implements Serializable {
 
     public String push_haftalık() {
 
-        return "show_notes.xhtml";
+        return "show_weeklyPlanner.xhtml";
     }
 
     public String push_trash() {

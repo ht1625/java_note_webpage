@@ -21,6 +21,7 @@ public class haftalik_data extends db_connect implements Serializable {
     public String friday;
     public String saturday;
     public String sunday;
+    
 
     public String getMonday() {
         return monday;
@@ -81,17 +82,27 @@ public class haftalik_data extends db_connect implements Serializable {
     public void weekly() throws SQLException, Exception {
         this.addWeeklyPlanner();
     }
+    
+ int week_id;
+
+    public int getWeek_id() {
+        return week_id++;
+    }
+
+    public void setWeek_id(int week_id) {
+        this.week_id = week_id;
+    }
 
     public void addWeeklyPlanner() throws Exception, SQLException {
 
         db_connect conn = new db_connect();
         conn.connection=conn.connect();
 
-        String query ="INSERT INTO EHA.WEEKLY_PLANNER (user_id ,monday, tuesday,wednesday,thursday,friday,saturday,sunday) VALUES (" +user_data.user.getUser_id()+ ",'"
+        String query ="INSERT INTO EHA.WEEKLY_PLANNER (weekly_id,user_id ,monday, tuesday,wednesday,thursday,friday,saturday,sunday) VALUES ("+this.getWeek_id() + ","+user_data.user.getUser_id()+ ",'"
                 + this.getMonday() + "','" + this.getTuesday() + "','" + this.getWednesday() + "','" + this.getThursday() + "','" + this.getFriday() + "','"
                 + this.getSaturday() + "','" + this.getSunday() +"')";
         int num = conn.stmt.executeUpdate(query);
-  
+      
    }
 
 }

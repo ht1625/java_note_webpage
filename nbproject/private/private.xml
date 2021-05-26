@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/tnshu/Documents/NetBeansProjects/prog_app/web/todolist.js</file>
-            <file>file:/C:/Users/tnshu/Documents/NetBeansProjects/prog_app/web/todo_list.xhtml</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/src/java/pushdata_db.java</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/src/java/show_weeklyPlanners.java</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/src/java/sil_duzenle.java</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/web/edit_genelnot.xhtml</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/web/show_notes.xhtml</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/web/show_weeklyPlanner.xhtml</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/src/java/data_weeklyPlanners.java</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/src/java/data_genel.java</file>
         </group>
     </open-files>
 </project-private>
