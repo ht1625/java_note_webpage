@@ -3,15 +3,16 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-          
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></link>
+        <script src="omnifaces-functions.taglib.xml"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+        <link rel="stylesheet" href="https://showcase.omnifaces.org/functions/Strings"></link>
         <style>
             body {font-family: "Lato", sans-serif;}
 
@@ -135,21 +136,38 @@
                 left: 100%;
                 top: 0;
             }
-
+            table{
+                margin-left: 40px; 
+                margin-bottom: 10px;
+                
+            }
+            th{
+                padding: 5px;
+                font-weight: normal;
+                background-color: #e6e6ff;
+                border: 1px solid black;
+                width: 145px;
+            }
+            label{
+                font-size: 30px;
+                font-weight: normal;
+                margin-left: 40px; 
+                margin-right: 0px;
+                padding-right: 0px;
+                margin-bottom: 10px;
+            }
         </style>
     </h:head>
     <h:body style="background-color:#F5F5DC">
+
+        <h1 style="margin-left: 100px ; font-size: 50px">Your Weekly Planners</h1>
+
         <h:panelGrid>
-
-
             <h:panelGrid>
                 <ui:insert name="header">
                     <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
                 </ui:insert>
             </h:panelGrid>
-
-            <h1 style="margin-left: 100px ; font-size: 50px">Your Weekly Planners</h1>
-
 
 
             <h:panelGrid>
@@ -158,33 +176,53 @@
                 </ui:insert>
             </h:panelGrid>
 
-
         </h:panelGrid>
 
         <h:panelGrid>   
             <table class="order-table" >
-                 <h:outputText value="sdawedwwdwqdewdweewfewfewewfwefewfewfwefwe"></h:outputText>
-                 <h:outputText value="#{show_weeklyPlanners.size()}"></h:outputText>
+
+                <label>Monday</label>
+
+                <label>Tuesday</label>
+
+                <label style="margin-left: 45px;">Wednesday</label>
+
+                <label style="margin-left: 30px; ">Thursday</label>
+
+                <label style="margin-left: 30px; ">Friday</label>
+
+                <label style="margin-left: 50px; ">Saturday</label>
+
+                <label style="margin-left: 30px; ">Sunday</label>
+
                 <ui:repeat value = "#{show_weeklyPlanners.weekly}" var = "week">
 
-                <h:column>    				
-                    <f:facet name = "header">monday</f:facet>    				
-                        #{week.monday}
-                </h:column>
+                    <tr>
+                        <th><h:outputText value="#{week.monday}"></h:outputText></th>
+                        <th><h:outputText value="#{week.tuesday}" style="width: 150px" ></h:outputText></th>
+                        <th><h:outputText value="#{week.wednesday}"></h:outputText></th>
+                        <th><h:outputText value="#{week.thursday}"></h:outputText></th>
+                        <th><h:outputText value="#{week.friday}"></h:outputText></th>
+                        <th><h:outputText value="#{week.saturday}"></h:outputText></th>
+                        <th><h:outputText value="#{week.sunday}"></h:outputText></th>
 
-                <h:outputText value="#{week.tuesday}"></h:outputText>s
+                    
 
-                <h:outputText value="#{week.wednesday}"></h:outputText>
+                    <h:form>
+                        <td style="width: 50px ;">
+                            <h:commandButton value="Del" action="#{deleteUpdate_weeklyPlanner.delete_week(week.weekly_id)}" style="width: 40px; margin-top: 10px; margin-bottom: 10px; background-color: #f2f2f2;"></h:commandButton>         
+                        </td>
+                        <td style="width: 50px">
+                            <h:commandButton  value="Upt" action="#{deleteUpdate_weeklyPlanner.update_week(week.weekly_id, week.monday, week.tuesday, week.wednesday, week.thursday, week.friday, week.saturday, week.sunday)}" style="width: 40px; margin-top: 10px; margin-bottom: 10px; background-color: #f2f2f2;"></h:commandButton>
+                        </td>
+                    </h:form>
+</tr>
+                    <h:form><h:outputLabel value="   "></h:outputLabel></h:form>
+                    
 
-                <h:outputText value="#{week.thursday}"></h:outputText>
-                <h:outputText value="#{week.friday}"></h:outputText>
-                <h:outputText value="#{week.saturday}"></h:outputText>
-                <h:outputText value="#{week.sunday}"></h:outputText>
-               
-             
-            </ui:repeat>
+                </ui:repeat>
             </table>
-            
+
         </h:panelGrid>
 
 

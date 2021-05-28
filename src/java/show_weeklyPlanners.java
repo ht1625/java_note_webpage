@@ -1,10 +1,8 @@
 
 import java.io.Serializable;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -40,7 +38,7 @@ public class show_weeklyPlanners extends db_connect implements Serializable {
         ResultSet rs = conn.stmt.executeQuery(query);
          while(rs.next()) {
              item.setWeekly_id(rs.getInt("weekly_id"));
-            item.setMonday(rs.getString("monday"));
+            item.setMonday((String) rs.getString("monday"));
             item.setTuesday(rs.getString("tuesday"));
             item.setWednesday(rs.getString("wednesday"));
             item.setThursday(rs.getString("thursday"));
