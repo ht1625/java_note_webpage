@@ -182,23 +182,23 @@
                     </th>
                 </tr>
 
-                <ui:repeat var="o" value="#{pushdata_db.genelnot}" varStatus="status">
+                <ui:repeat var="om" value="#{pushdata_db.genelnot}" >
 
                     <tr>
                         <td>
-                            <h:outputText value="#{o.title}"></h:outputText> 
+                            <h:outputText value="#{om.title}"></h:outputText> 
                         </td>
                         <td>
-                            <h:outputText value="#{o.content}"></h:outputText>
+                            <h:outputText value="#{om.content}"></h:outputText>
                         </td>
                         <h:form>
                             <td style="width: 50px">
-                                <h:commandLink action="#{sil_duzenle.sil_note_genel(o.note_id)}" >Sil </h:commandLink>               
+                                <h:commandLink action="#{sil_duzenle.sil_note_genel(om.note_id)}" >Sil </h:commandLink>               
                             </td>
                         </h:form>
                         <h:form>
                             <td style="width: 50px">
-                                <h:commandLink action="#{sil_duzenle.upd_note_genel(o.note_id,o.title,o.content)}" >Düzenle</h:commandLink>   
+                                <h:commandLink action="#{sil_duzenle.upd_note_genel(om.note_id, om.title, om.content)}" >Düzenle</h:commandLink>   
                             </td>
                         </h:form>
                     </tr>

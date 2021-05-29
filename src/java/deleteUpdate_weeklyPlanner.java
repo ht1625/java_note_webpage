@@ -23,7 +23,7 @@ public class deleteUpdate_weeklyPlanner implements Serializable {
     public String delete_week(int weekly_id) throws Exception {
         db_connect conn = new db_connect();
         conn.connection = conn.connect();
-        String query = "DELETE FROM EHA.WEEKLY_PLANNER WHERE weekly_id = " + weekly_id;  //çöp kutusu eklenince oraya taşı oradan sil
+        String query = "UPDATE EHA.WEEKLY_PLANNER SET isactive = 0 WHERE weekly_id = " + weekly_id;  //çöp kutusu eklenince oraya taşı oradan sil
         int num = conn.stmt.executeUpdate(query);
         return "show_weeklyPlanner.xhtml";
     }

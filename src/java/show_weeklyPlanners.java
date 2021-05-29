@@ -6,14 +6,12 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-
 @ManagedBean
 @SessionScoped
 
-
 public class show_weeklyPlanners extends db_connect implements Serializable {
 
-   public show_weeklyPlanners() {
+    public show_weeklyPlanners() {
     }
 
     public List<data_weeklyPlanners> weekly;
@@ -29,15 +27,14 @@ public class show_weeklyPlanners extends db_connect implements Serializable {
     public String days() throws Exception {
         this.weekly = new ArrayList<data_weeklyPlanners>();
         data_weeklyPlanners item = new data_weeklyPlanners();
-        
 
         db_connect conn = new db_connect();
         conn.connection = conn.connect();
 
-        String query = "SELECT weekly_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday FROM WEEKLY_PLANNER WHERE USER_ID = " + user_data.user.getUser_id();
+        String query = "SELECT weekly_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday FROM WEEKLY_PLANNER WHERE ISACTIVE = 1 AND USER_ID = " + user_data.user.getUser_id();
         ResultSet rs = conn.stmt.executeQuery(query);
-         while(rs.next()) {
-             item.setWeekly_id(rs.getInt("weekly_id"));
+        while (rs.next()) {
+            item.setWeekly_id(rs.getInt("weekly_id"));
             item.setMonday((String) rs.getString("monday"));
             item.setTuesday(rs.getString("tuesday"));
             item.setWednesday(rs.getString("wednesday"));
@@ -45,16 +42,16 @@ public class show_weeklyPlanners extends db_connect implements Serializable {
             item.setFriday(rs.getString("friday"));
             item.setSaturday(rs.getString("saturday"));
             item.setSunday(rs.getString("sunday"));
-            
-         this.weekly.add(item);
-            item=new data_weeklyPlanners();
+
+            this.weekly.add(item);
+            item = new data_weeklyPlanners();
         }
 
         return "show_weeklyPlanner.xhtml";
     }
-    
-     public int size(){
-       return this.weekly.size();
-   }
+
+    public int size() {
+        return this.weekly.size();
+    }
 
 }

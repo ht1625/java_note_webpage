@@ -6,9 +6,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
 
+
       >
     <h:head>
-        <meta name="description" content="#{ELBean.pageDescription}"/>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -141,7 +141,6 @@
             table {
                 max-width: 850px;
                 max-height:auto;
-                margin-top: 15px;
             }
             th, td {
                 text-align: left;
@@ -155,62 +154,112 @@
                 color: white;
             }
         </style>
+
+        <script>
+            function openCity(cityName) {
+                document.getElementById(cityName).style.display = "block";
+                if (cityName == 'haftalık') {
+                    document.getElementById('genel').style.display = "none";
+                } else {
+                    document.getElementById('haftalık').style.display = "none";
+                }
+            }
+        </script>
     </h:head>
 
     <h:body style="background-color:#F5F5DC">
-
-        <h:panelGrid id="header">
-            <ui:insert name="header">
-                <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
-            </ui:insert>
+        <h:panelGrid>
 
 
-            <ui:insert name="header" >
-                <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
-            </ui:insert>
+
+            <h:panelGrid >
+                <ui:insert >
+                    <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
+                </ui:insert>
+            </h:panelGrid>
+
         </h:panelGrid>
 
-        <h:panelGrid >
-            <table class="order-table" style="margin-right:400px;width: 100%;text-align: center;margin-left: 125px">
 
-                <tr>
-                    <th style="width:200px">
-                        <h2>Title Note</h2>
-                    </th>
-                    <th>
-                        <h2>Content Note</h2>
-                    </th>
-                </tr>
 
-                <ui:repeat var="om" value="#{pushdata_db.genelnot}" >
+        <h:panelGrid style="width:700px;margin-left: 140px;">
+            <div class="w3-bar w3-black">
+                <button class="w3-bar-item w3-button" onclick="openCity('genel')">Genel Not</button>
+                <button class="w3-bar-item w3-button" onclick="openCity('haftalık')">Haftalık Not</button>
+            </div>
+
+            <h:panelGrid id="genel"  class="w3-container city" >
+                <table class="order-table" style="width: 100%;text-align: center;">
 
                     <tr>
-                        <td>
-                            <h:outputText value="#{om.title}"></h:outputText> 
-                        </td>
-                        <td>
-                            <h:outputText value="#{om.content}"></h:outputText>
-                        </td>
-                        <h:form>
-                            <td style="width: 50px">
-                                <h:commandLink action="#{sil_duzenle.sil_note_genel(om.note_id)}" >Sil </h:commandLink>               
-                            </td>
-                        </h:form>
-                        <h:form>
-                            <td style="width: 50px">
-                                <h:commandLink action="#{sil_duzenle.upd_note_genel(om.note_id, om.title, om.content)}" >Düzenle</h:commandLink>   
-                            </td>
-                        </h:form>
+                        <th style="width:350px">
+                            <h3>Title Note</h3>
+                        </th>
+                        <th style="width:350px">
+                            <h3>Content Note</h3>
+                        </th>
                     </tr>
 
-                </ui:repeat>
+                    <ui:repeat var="o" value="#{pushdata_db.trash_genel}">
 
-            </table>
+                        <tr>
+                            <td>
+                                <h:outputText value="#{o.title}"></h:outputText> 
+                            </td>
+                            <td>
+                                <h:outputText value="#{o.content}"></h:outputText>
+                            </td>
+                            <h:form>
+                                <td style="width: 100px">
+                                    <h:commandLink action="#{sil_duzenle.do_back_dowland(o.note_id)}" >Geri Yükle </h:commandLink>               
+                                </td>
+                            </h:form>
+
+                        </tr>
+
+                    </ui:repeat>
+
+                </table>
+            </h:panelGrid>
+
+            <h:panelGrid id="haftalık" class="w3-container city" style="display:none">   
+                <table class="order-table" style="width: 100%;text-align: center;">
+                    <tr>
+                        <th style="width:70px">Monday</th>
+                        <th style="width:70px">Tuesday</th>
+                        <th style="width:70px">Wednesday</th>
+                        <th style="width:70px">Thursday</th>
+                        <th style="width:70px">Friday</th>
+                        <th style="width:70px">Saturday</th>
+                        <th style="width:70px">Sunday</th>
+                    </tr>
+
+                    <ui:repeat value = "#{pushdata_db.weekly}" var = "week">
+
+                        <tr>
+                            <td><h:outputText value="#{week.monday}"></h:outputText></td>
+                            <td><h:outputText value="#{week.tuesday}" ></h:outputText></td>
+                            <td><h:outputText value="#{week.wednesday}"></h:outputText></td>
+                            <td><h:outputText value="#{week.thursday}"></h:outputText></td>
+                            <td><h:outputText value="#{week.friday}"></h:outputText></td>
+                            <td><h:outputText value="#{week.saturday}"></h:outputText></td>
+                            <td><h:outputText value="#{week.sunday}"></h:outputText></td>
+
+
+
+                            <h:form>
+                                <td style="width: 100px">
+                                    <h:commandLink action="#{sil_duzenle.do_back_week(week.weekly_id)}" >Geri Yükle </h:commandLink>               
+                                </td>                            
+                            </h:form>
+                        </tr>
+                    </ui:repeat>
+                </table>
+
+            </h:panelGrid>
         </h:panelGrid>
-
-
-
 
 
     </h:body>
 </html>
+

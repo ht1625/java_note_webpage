@@ -22,7 +22,7 @@ public class sil_duzenle implements Serializable {
     public String sil_note_genel(int note_id) throws Exception {
         db_connect conn = new db_connect();
         conn.connection = conn.connect();
-        String query = "DELETE FROM GENEL_NOT WHERE note_id = " + note_id;
+        String query = "UPDATE GENEL_NOT SET is_active = 0 WHERE note_id = " + note_id;
         int num = conn.stmt.executeUpdate(query);
         return "show_notes.xhtml";
     }
@@ -45,7 +45,27 @@ public class sil_duzenle implements Serializable {
         int num1 = conn.stmt.executeUpdate(query1);
         return "show_notes.xhtml";
     }
-
+ 
+    public String do_back_dowland(int note_id)throws Exception{
+        
+        db_connect conn = new db_connect();
+        conn.connection = conn.connect();
+        String query = "UPDATE GENEL_NOT SET is_active = 1 WHERE note_id = " + note_id;
+        int num = conn.stmt.executeUpdate(query);
+        return "trash.xhtml";
+    }
+    
+    public String do_back_week(int note_id)throws Exception{
+        
+        db_connect conn = new db_connect();
+        conn.connection = conn.connect();
+        String query = "UPDATE WEEKLY_PLANNER SET isactive = 1 WHERE weekly_id = " + note_id;
+        int num = conn.stmt.executeUpdate(query);
+        
+        
+        return "trash.xhtml";
+    }
+    
     public sil_duzenle() {
     }
 }
