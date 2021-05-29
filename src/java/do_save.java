@@ -7,12 +7,19 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 
-public class do_save extends db_connect implements Serializable {
+public class do_save implements Serializable {
 
     String username;
     String firstname;
-    String surname;
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+   private String  surname;
     public do_save() throws Exception {
         super();
     }
@@ -31,14 +38,6 @@ public class do_save extends db_connect implements Serializable {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
  

@@ -51,11 +51,29 @@ public class user_data {
         this.birthday = birthday;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     private String firstname;
     private String surname;
     private String email;
     private String phoneNumber;
     private String birthday;
+    private String username;
+    private String password;
     public static user_data user;
 
     public static user_data getUser() {

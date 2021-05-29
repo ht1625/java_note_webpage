@@ -64,12 +64,14 @@ public class do_login implements Serializable {
         ResultSet rs = conn.stmt.executeQuery(query);
         if (rs.next()) {
                     int ide = rs.getInt("id");
-                    this.users.user.setUser_id(ide);
-                    this.users.user.setFirstname(rs.getString("firstname"));
-                    this.users.user.setSurname(rs.getString("surname"));
-                    this.users.user.setEmail(rs.getString("email"));
-                    this.users.user.setPhoneNumber(rs.getString("phonenumber"));
-                    this.users.user.setBirthday(rs.getString("birthday"));
+                    user_data.user.setUser_id(ide);
+                    user_data.user.setFirstname(rs.getString("firstname"));
+                    user_data.user.setSurname(rs.getString("surname"));
+                    user_data.user.setEmail(rs.getString("email"));
+                    user_data.user.setPhoneNumber(rs.getString("phonenumber"));
+                    user_data.user.setBirthday(rs.getString("birthday"));
+                    user_data.user.setPassword(rs.getString("password"));
+                    user_data.user.setUsername(rs.getString("username"));
                     return "Home.xhtml";
                 }
         return "index.xhtml";
