@@ -12,9 +12,6 @@ public class do_save extends db_connect implements Serializable {
     String username;
     String firstname;
     String surname;
-     String email;
-     String phoneNumber;
-     String birthday;
 
     public do_save() throws Exception {
         super();
@@ -44,30 +41,7 @@ public class do_save extends db_connect implements Serializable {
         this.surname = surname;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
+ 
 
     public String getPassword() {
         return password;
@@ -79,8 +53,7 @@ public class do_save extends db_connect implements Serializable {
     String password;
 
     public void save() throws Exception {
-        if (this.getFirstname().equals("") || this.getSurname().equals("")||  this.getEmail().equals("")||  this.getPhoneNumber().equals("")||  this.getBirthday().equals("")||
-                this.getUsername().equals("") || this.getPassword().equals("")) {
+        if (this.getFirstname().equals("") || this.getSurname().equals("") || this.getUsername().equals("") || this.getPassword().equals("")) {
             this.give_alert();
         } else {
             this.do_saving();
@@ -90,8 +63,7 @@ public class do_save extends db_connect implements Serializable {
     public String do_saving() throws Exception {
         db_connect conn = new db_connect();
         conn.connection=conn.connect();
-        String query = "INSERT INTO USERS (firstname,surname,email,phonenumber,birthday,username,password) VALUES ('" + this.getFirstname() + "','" + this.getSurname()+ "','"
-                + this.getEmail()+ "','" + this.getPhoneNumber()+ "','" + this.getBirthday()+ "','"
+        String query = "INSERT INTO USERS (firstname,surname,username,password) VALUES ('" + this.getFirstname() + "','" + this.getSurname()+ "','"
                 + this.getUsername() + "','" + this.getPassword() + "')";
         int num = conn.stmt.executeUpdate(query);
 
