@@ -38,6 +38,7 @@ public class get_data  implements Serializable {
     public String genel_not;
     public String title_genel_not;
 
+
     public get_data()  {}
 
     public void get_genel_note() throws Exception {

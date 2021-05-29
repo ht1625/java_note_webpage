@@ -10,7 +10,8 @@ import javax.faces.bean.ManagedBean;
 
 public class direction_link implements Serializable {
 
-    direction_link() {}
+    direction_link() {
+    }
 
     public String back_homepage() {
         return "Home.xhtml";

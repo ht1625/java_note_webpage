@@ -138,39 +138,66 @@
                 left: 100%;
                 top: 0;
             }
-            
+
         </style>
+        <script>
+
+            function saveToTxt(fld) {
+                //const textAreaValue = fld.value;
+                //document.getElementById('form10').value = "sxdcfvgbhnj";//id si olan text area ya değer veriliyor
+
+                $.ajax({
+                    url: 'GetUserServlet',
+                    data: {
+                        userName: $('#userName').val()
+                    },
+                    success: function (responseText) {
+                        //$('#ajaxGetUserServletResponse').text(responseText);
+                    }
+                });
+
+            }
+            function functionToBeExecuted() {
+                $.ajax({
+                    url: 'GetData',
+                    success: function (responseText) {
+                        document.getElementById('userName').value = responseText;
+                    }
+                });
+            }
+        </script>
+
     </h:head>
 
-    <h:body style="background-color:#F5F5DC">
-  
+    <h:body style="background-color:#F5F5DC" onload="functionToBeExecuted()">
 
 
-            <h:panelGrid id="header">
-                <ui:insert name="header">
-                    <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
-                </ui:insert>
-                <h:form style="padding-left:200px;padding-top: 60px">
-                    <h2 style="color:#818181">Write something <i class="fas fa-pencil-alt prefix"></i></h2>
-                    <h:inputText id="title" value="#{get_data.title_genel_not}" p:placeholder="Title" style="background-color:#F0F0DF;width:300px;height: 30px;color:red"></h:inputText> <br></br> <br></br>
-                    <h:inputTextarea value="#{get_data.genel_not}" p:placeholder="writing....." id="inst_key" style="width: 600px;height:400px;background-color:#F0F0DF ;color:black" validatorMessage="write something" ></h:inputTextarea> 
-                    <h:commandButton value="Save note" type="submit" action="#{get_data.get_genel_note()}" style="margin-left: 20px"></h:commandButton>
-                </h:form>
-                <ui:insert name="header" >
-                    <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
-                </ui:insert>
-            </h:panelGrid>
-            
-            <!--
-             <h:dataTable> kullanıcıdan aldığın otları sırala burda 
-                 <h:column><f:facet name = "header">Author ID</f:facet>
-                 </h:column>
-                 <h:column><f:facet name = "header">Name</f:facet>
-                 </h:column            
-             </h:dataTable>
-            -->
 
-               
+        <h:panelGrid id="header">
+            <ui:insert name="header">
+                <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
+            </ui:insert>
+            <h:form style="padding-left:200px;padding-top: 60px">
+                <h2 style="color:#818181">Write something <i class="fas fa-pencil-alt prefix"></i></h2>
+                <h:inputText id="title" value="#{get_data.title_genel_not}" p:placeholder="Title" style="background-color:#F0F0DF;width:300px;height: 30px;color:red"></h:inputText> <br></br> <br></br>
+                <h:inputTextarea value="#{get_data.genel_not}" p:placeholder="writing....." id="inst_key" style="width: 600px;height:400px;background-color:#F0F0DF ;color:black" validatorMessage="write something" ></h:inputTextarea> 
+                <h:commandButton value="Save note" type="submit" action="#{get_data.get_genel_note()}" style="margin-left: 20px"></h:commandButton>
+            </h:form>
+            <ui:insert name="header" >
+                <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
+            </ui:insert>
+        </h:panelGrid>
+
+        <!--
+         <h:dataTable> kullanıcıdan aldığın otları sırala burda 
+             <h:column><f:facet name = "header">Author ID</f:facet>
+             </h:column>
+             <h:column><f:facet name = "header">Name</f:facet>
+             </h:column            
+         </h:dataTable>
+        -->
+
+
 
 
 

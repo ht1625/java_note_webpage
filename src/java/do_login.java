@@ -72,6 +72,7 @@ public class do_login implements Serializable {
                     user_data.user.setBirthday(rs.getString("birthday"));
                     user_data.user.setPassword(rs.getString("password"));
                     user_data.user.setUsername(rs.getString("username"));
+                    user_data.user.setKaralama_not(rs.getString("karalama_notu"));
                     return "Home.xhtml";
                 }
         return "index.xhtml";
@@ -84,5 +85,13 @@ public class do_login implements Serializable {
     public String back_index() {
         return "index.xhtml";
     }
-
+   public String exit()throws Exception{
+       
+        db_connect conn = new db_connect();
+        conn.connection = conn.connect();
+        String query = "UPDATE USERS SET karalama_notu = '"+user_data.user.getKaralama_not()+"' WHERE id = " + user_data.user.getUser_id();
+        int num = conn.stmt.executeUpdate(query);   
+       
+       return "index.xhtml";
+   }
 }

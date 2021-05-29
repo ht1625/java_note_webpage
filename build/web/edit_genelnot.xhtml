@@ -139,9 +139,35 @@
             }
 
         </style>
+        <script>
+
+            function saveToTxt(fld) {
+                //const textAreaValue = fld.value;
+                //document.getElementById('form10').value = "sxdcfvgbhnj";//id si olan text area ya değer veriliyor
+
+                $.ajax({
+                    url: 'GetUserServlet',
+                    data: {
+                        userName: $('#userName').val()
+                    },
+                    success: function (responseText) {
+                        //$('#ajaxGetUserServletResponse').text(responseText);
+                    }
+                });
+
+            }
+            function functionToBeExecuted() {
+                $.ajax({
+                    url: 'GetData',
+                    success: function (responseText) {
+                        document.getElementById('userName').value = responseText;
+                    }
+                });
+            }
+        </script>
     </h:head>
 
-    <h:body style="background-color:#F5F5DC">
+    <h:body style="background-color:#F5F5DC" onload="functionToBeExecuted()">
 
 
         <h:form style="margin-left:180px;margin-top: 50px">

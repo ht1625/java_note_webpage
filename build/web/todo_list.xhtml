@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        
+
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
         <script src='todolist.js'></script>
@@ -140,63 +140,88 @@
                 top: 0;
             }
             *{
-    margin: 0;
-    padding: 0;
-}
-form,span{
-    
-    margin-left: 150px;
-    width: 60%;
-    border: thin solid black;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+                margin: 0;
+                padding: 0;
+            }
+            form,span{
 
-}
+                margin-left: 150px;
+                width: 60%;
+                border: thin solid black;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
 
-
-input[type=button],input[type=text]{
-
-    margin: 0.25rem;
-}
-select{
-    max-width: 150px;
-    margin: 0.25rem;
-    
-}
-h3,h4,h5,li{
-    text-align: center;
-}
-.baslik{
-    background: url(images/logo.png) no-repeat 20% center/15%,url(images/pen.png) no-repeat 85% center/5%;
-    display: block;
-    width: 60%;
-    line-height: 60px;
-    border: thin solid black;
-    margin-left: 150px;
-    padding: 25px 0;
-    color: black;
-    font-weight: bolder;
-
-}
-
-form>label{
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-}
+            }
 
 
+            input[type=button],input[type=text]{
 
-li img{
-    width: 1rem;
-    height: 1rem;
-    margin: 0 0.25rem;
-}
-            
+                margin: 0.25rem;
+            }
+            select{
+                max-width: 150px;
+                margin: 0.25rem;
+
+            }
+            h3,h4,h5,li{
+                text-align: center;
+            }
+            .baslik{
+                background: url(images/logo.png) no-repeat 20% center/15%,url(images/pen.png) no-repeat 85% center/5%;
+                display: block;
+                width: 60%;
+                line-height: 60px;
+                border: thin solid black;
+                margin-left: 150px;
+                padding: 25px 0;
+                color: black;
+                font-weight: bolder;
+
+            }
+
+            form>label{
+                border-right: thin solid black;
+                border-bottom: thin solid black;
+            }
+
+
+
+            li img{
+                width: 1rem;
+                height: 1rem;
+                margin: 0 0.25rem;
+            }
+
         </style>
-        
+        <script>
+
+            function saveToTxt(fld) {
+                //const textAreaValue = fld.value;
+                //document.getElementById('form10').value = "sxdcfvgbhnj";//id si olan text area ya değer veriliyor
+
+                $.ajax({
+                    url: 'GetUserServlet',
+                    data: {
+                        userName: $('#userName').val()
+                    },
+                    success: function (responseText) {
+                        //$('#ajaxGetUserServletResponse').text(responseText);
+                    }
+                });
+
+            }
+            function functionToBeExecuted() {
+                $.ajax({
+                    url: 'GetData',
+                    success: function (responseText) {
+                        document.getElementById('userName').value = responseText;
+                    }
+                });
+            }
+        </script>
     </h:head>
 
-    <h:body style="background-color:#F5F5DC; padding-left:0px;padding-top: 60px">
+    <h:body style="background-color:#F5F5DC; padding-left:0px;padding-top: 60px" onload="functionToBeExecuted()">
         <h:panelGrid>
 
 
@@ -205,7 +230,7 @@ li img{
                     <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
                 </ui:insert>
             </h:panelGrid>
-            
+
 
             <h:panelGrid id="header">
                 <ui:insert name="header" >
@@ -215,24 +240,24 @@ li img{
 
 
         </h:panelGrid>
-    
-    <h3 class="baslik">To Do List</h3>
-    <form action="" id="formYapilacaklar" style="padding: 25px">
-        <input type="text" name="" id="txtYapilacaklar"></input>
-        <input type="button" value="Yapılacaklar Listesine Ekle" id="btnEkle" onclick="listeyeEkle();"></input>
-    </form>
-    <span>
-        <h4> To Do List </h4>
-        <h4> Finished </h4>
-        <ul id="listeYapilacaklar">
-            <!--Boş Liste-->
-        </ul>
-        
-        <ul id="listeTamamlananlar">
-            <!--Boş Liste-->
-        </ul>
-    </span>
-    <h5 id="sonuc"></h5>
+
+        <h3 class="baslik">To Do List</h3>
+        <form action="" id="formYapilacaklar" style="padding: 25px">
+            <input type="text" name="" id="txtYapilacaklar"></input>
+            <input type="button" value="Yapılacaklar Listesine Ekle" id="btnEkle" onclick="listeyeEkle();"></input>
+        </form>
+        <span>
+            <h4> To Do List </h4>
+            <h4> Finished </h4>
+            <ul id="listeYapilacaklar">
+                <!--Boş Liste-->
+            </ul>
+
+            <ul id="listeTamamlananlar">
+                <!--Boş Liste-->
+            </ul>
+        </span>
+        <h5 id="sonuc"></h5>
 
 
     </h:body>

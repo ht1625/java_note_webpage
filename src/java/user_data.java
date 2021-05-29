@@ -66,7 +66,15 @@ public class user_data {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getKaralama_not() {
+        return karalama_not;
+    }
 
+    public void setKaralama_not(String karalama_not) {
+        this.karalama_not = karalama_not;
+    }
+    private String karalama_not;
     private String firstname;
     private String surname;
     private String email;
