@@ -66,7 +66,10 @@ public class do_login implements Serializable {
                     int ide = rs.getInt("id");
                     this.users.user.setUser_id(ide);
                     this.users.user.setFirstname(rs.getString("firstname"));
-                    this.users.user.setNickname(rs.getString("nickname"));
+                    this.users.user.setSurname(rs.getString("surname"));
+                    this.users.user.setEmail(rs.getString("email"));
+                    this.users.user.setPhoneNumber(rs.getString("phonenumber"));
+                    this.users.user.setBirthday(rs.getString("birthday"));
                     return "Home.xhtml";
                 }
         return "index.xhtml";
