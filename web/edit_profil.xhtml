@@ -141,11 +141,6 @@
 
         <script type="text/javascript">
 
-            function uyari() {
-                alert("Your Profile Updated!");
-            }
-
-      
 
             function saveToTxt(fld) {
                 //const textAreaValue = fld.value;
@@ -185,30 +180,28 @@
         
         <h:form>
 
-            <label style="font-weight: normal;font-size: 40px; margin-left: 200px;">E-Mail: </label>
-            <h:inputTextarea value="#{updateProfile.update.email}" style="width: 200px; height: 30px;"></h:inputTextarea>
-            <br></br>
-
-            <label style="font-weight: normal;font-size: 40px; margin-left: 200px">Phone Number: </label>
-            <h:inputTextarea value="#{updateProfile.update.phonenumber}" style="width: 200px; height: 30px;"></h:inputTextarea>
-            <br></br>
-
-            <label style="font-weight: normal;font-size: 40px; margin-left: 200px">Username: </label>
+            <label style="font-size: 40px; margin-left: 200px">Username: </label>
             <h:inputTextarea value="#{updateProfile.update.username}" style="width: 200px; height: 30px;"></h:inputTextarea>
             <br></br>
 
-            <label style="font-weight: normal;font-size: 40px; margin-left: 200px">Birthday: </label>
+            <label style="font-size: 40px; margin-left: 200px;">E-Mail: </label>
+            <h:inputTextarea value="#{updateProfile.update.email}" style="width: 200px; height: 30px;"></h:inputTextarea>
+            <br></br>
+
+            <label style="font-size: 40px; margin-left: 200px">Phone Number: </label>
+            <h:inputTextarea value="#{updateProfile.update.phonenumber}" style="width: 200px; height: 30px;"></h:inputTextarea>
+            <br></br>
+
+            <label style="font-size: 40px; margin-left: 200px">Birthday: </label>
             <h:inputTextarea value="#{updateProfile.update.birthday}" style="width: 200px; height: 30px;"></h:inputTextarea>
             <br></br>
             
-            
+            <h:commandButton value="Save" type="submit" style="margin-left: 900px; width: 150px; height: 40px;" action="#{updateProfile.upd_infos()}" ></h:commandButton>      
+
         </h:form>
 
 
-
-        <h:form>
-            <h:commandButton value="Save" type="submit" style="margin-left: 900px; width: 150px; height: 40px;" actionListener="#{updateProfile.upd_infos()}" onclick="uyari()" ></h:commandButton>      
-        </h:form>
+     
 
 
 

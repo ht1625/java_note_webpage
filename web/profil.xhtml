@@ -141,8 +141,8 @@
 
                 border-radius: 50%;
                 overflow: hidden;
-                width: 300px;
-                height: 300px;
+                width: 250px;
+                height: 250px;
                 margin-left: 120px;
 
             }
@@ -170,19 +170,19 @@
                 </td>
                 <td>
                     
-                    <label style="font-size: 50px; margin-left: 160px">Username: </label>
+                    <label style="font-size: 40px; margin-left: 160px">Username: </label>
                     <h:outputText value="#{do_login.users.username}" style="font-size: 45px "></h:outputText>
                     <br></br>
                     
-                    <label style="font-size: 50px; margin-left: 160px">E-Mail: </label>
+                    <label style="font-size: 40px; margin-left: 160px">E-Mail: </label>
                     <h:outputText value="#{do_login.users.email}" style="font-size: 45px "></h:outputText>
                     <br></br>
                     
-                    <label style="font-size: 50px; margin-left: 160px">Phone Number: </label>
+                    <label style="font-size: 40px; margin-left: 160px">Phone Number: </label>
                     <h:outputText value="#{do_login.users.phoneNumber}" style="font-size: 45px "></h:outputText>
                     <br></br>
                     
-                    <label style="font-size: 50px; margin-left: 160px">Birthday: </label>
+                    <label style="font-size: 40px; margin-left: 160px">Birthday: </label>
                     <h:outputText value="#{do_login.users.birthday}" style="font-size: 45px "></h:outputText>
                     
                 </td>
@@ -192,12 +192,12 @@
 
         <br></br>
 
-        <h:outputText value="#{do_login.users.firstname}" style="font-size: 45px; margin-left: 140px "></h:outputText>
+        <h:outputText value="#{do_login.users.firstname}" style="font-size: 45px; margin-left: 100px "></h:outputText>
         <h:outputText value="#{do_login.users.surname}" style="font-size: 45px; margin-left: 15px;"></h:outputText>
 
 
         <h:form>
-            <h:commandButton style="margin-left: 1300px; width: 150px; height: 40px;" action="#{updateProfile.update_week(username,phonenumber, birthday, email)}"  value="Edit Your Profile"></h:commandButton>      
+            <h:commandButton style="margin-left: 1300px; width: 150px; height: 40px;" action="#{updateProfile.update_week(do_login.users.username,do_login.users.phoneNumber, do_login.users.birthday, do_login.users.email)}"  value="Edit Your Profile"></h:commandButton>      
         </h:form>
 
 

@@ -7,7 +7,8 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 
 public class updateProfile implements Serializable {
-
+   
+        
     public updateProfile() {
     }
     
@@ -42,10 +43,12 @@ public class updateProfile implements Serializable {
         String query4 = "UPDATE EHA.USERS SET birthday='" + this.update.getBirthday()+ "' WHERE id = " + user_data.user.getUser_id();
         int num4 = conn.stmt.executeUpdate(query4);
         String query5 = "UPDATE EHA.USERS SET email='" + this.update.getEmail()+ "' WHERE id = " + user_data.user.getUser_id();
-
+        int num5 = conn.stmt.executeUpdate(query5);
 
         return "profil.xhtml";
-    }
+
+
+   }
     
 
 }

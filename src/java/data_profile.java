@@ -4,17 +4,11 @@ public class data_profile {
     public data_profile() {
     }
 
-    private String username;
+
     private String phonenumber;
     private String birthday;
     private String email;
-
-    public data_profile(String username, String name, String surname, String phonenumber, String birthday, String email) {
-        this.username = username;
-        this.phonenumber = phonenumber;
-        this.birthday = birthday;
-        this.email = email;
-    }
+private String username;
 
     public String getUsername() {
         return username;
@@ -23,6 +17,16 @@ public class data_profile {
     public void setUsername(String username) {
         this.username = username;
     }
+        
+     
+    public data_profile( String username, String phonenumber, String birthday, String email) {
+        
+        this.username=username;
+        this.phonenumber = phonenumber;
+        this.birthday = birthday;
+        this.email = email;
+    }
+
 
 
     public String getPhonenumber() {
