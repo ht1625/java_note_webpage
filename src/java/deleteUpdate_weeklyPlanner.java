@@ -23,7 +23,7 @@ public class deleteUpdate_weeklyPlanner implements Serializable {
     public String delete_week(int weekly_id) throws Exception {
         db_connect conn = new db_connect();
         conn.connection = conn.connect();
-        String query = "UPDATE EHA.WEEKLY_PLANNER SET isactive = 0 WHERE weekly_id = " + weekly_id;  //çöp kutusu eklenince oraya taşı oradan sil
+        String query = "UPDATE EHA.WEEKLY_PLANNER SET isactive = 0 WHERE weekly_id = " + weekly_id;
         int num = conn.stmt.executeUpdate(query);
         return "show_weeklyPlanner.xhtml";
     }
@@ -42,7 +42,7 @@ public class deleteUpdate_weeklyPlanner implements Serializable {
         return "edit_haftalik.xhtml";
     }
 
-    public String upd_week() throws Exception {    //?????????????????***
+    public String upd_week() throws Exception { 
         db_connect conn = new db_connect();
         conn.connection = conn.connect();
         String query = "UPDATE EHA.WEEKLY_PLANNER SET monday='" + this.deleteUptade.getMonday()+ "' WHERE weekly_id=" + this.deleteUptade.getWeekly_id();

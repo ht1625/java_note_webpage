@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/tnshu/Documents/NetBeansProjects/prog_app/web/todo_list.xhtml</file>
-            <file>file:/C:/Users/tnshu/Documents/NetBeansProjects/prog_app/web/WEB-INF/template/slide_right.xhtml</file>
-            <file>file:/C:/Users/tnshu/Documents/NetBeansProjects/prog_app/src/java/get_post.java</file>
-            <file>file:/C:/Users/tnshu/Documents/NetBeansProjects/prog_app/web/haftalık.xhtml</file>
-            <file>file:/C:/Users/tnshu/Documents/NetBeansProjects/prog_app/src/java/post.java</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/web/edit_haftalik.xhtml</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/web/profil.xhtml</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/src/java/do_login.java</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/src/java/updateProfile.java</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/src/java/data_profile.java</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/web/show_weeklyPlanner.xhtml</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/src/java/deleteUpdate_weeklyPlanner.java</file>
+            <file>file:/C:/Users/elife/Documents/NetBeansProjects/prog_app/web/edit_profil.xhtml</file>
         </group>
     </open-files>
 </project-private>
