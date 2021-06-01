@@ -6,7 +6,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
 
-      >
+
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></link>
@@ -15,7 +16,6 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-        <script src='todolist.js'></script>
         <style>
             body {font-family: "Lato", sans-serif;}
 
@@ -193,47 +193,22 @@
             }
 
         </style>
-        <script>
 
-            function saveToTxt(fld) {
-                //const textAreaValue = fld.value;
-                //document.getElementById('form10').value = "sxdcfvgbhnj";//id si olan text area ya değer veriliyor
-
-                $.ajax({
-                    url: 'GetUserServlet',
-                    data: {
-                        userName: $('#userName').val()
-                    },
-                    success: function (responseText) {
-                        //$('#ajaxGetUserServletResponse').text(responseText);
-                    }
-                });
-
-            }
-            function functionToBeExecuted() {
-                $.ajax({
-                    url: 'GetData',
-                    success: function (responseText) {
-                        document.getElementById('userName').value = responseText;
-                    }
-                });
-            }
-        </script>
     </h:head>
 
-    <h:body style="background-color:#F5F5DC; padding-left:0px;padding-top: 60px" onload="functionToBeExecuted()">
+    <h:body style="background-color:#F5F5DC; padding-left:0px;padding-top: 60px">
         <h:panelGrid>
 
 
-            <h:panelGrid id="header">
-                <ui:insert name="header">
+            <h:panelGrid>
+                <ui:insert >
                     <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
                 </ui:insert>
             </h:panelGrid>
 
 
-            <h:panelGrid id="header">
-                <ui:insert name="header" >
+            <h:panelGrid>
+                <ui:insert >
                     <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
                 </ui:insert>
             </h:panelGrid>
@@ -241,24 +216,43 @@
 
         </h:panelGrid>
 
-        <h3 class="baslik">To Do List</h3>
-        <form action="" id="formYapilacaklar" style="padding: 25px">
-            <input type="text" name="" id="txtYapilacaklar"></input>
-            <input type="button" value="Yapılacaklar Listesine Ekle" id="btnEkle" onclick="listeyeEkle();"></input>
-        </form>
-        <span>
-            <h4> To Do List </h4>
-            <h4> Finished </h4>
-            <ul id="listeYapilacaklar">
-                <!--Boş Liste-->
-            </ul>
+        <h3 class="baslik"> Yapılacaklar Listesine Ekle </h3>
+        <h:form id="formYapilacaklar" style="padding: 25px">
 
-            <ul id="listeTamamlananlar">
-                <!--Boş Liste-->
-            </ul>
-        </span>
-        <h5 id="sonuc"></h5>
+            <h:inputText  value="#{getdata_todo.list_todo}" id="txtYapilacaklar" p:placeholder="writing....." style="background-color:#F0F0DF ;color:black" ></h:inputText> 
+            <h:commandButton  type="submit" value="Yapılacaklar Listesine Ekle" action="#{getdata_todo.get_todo_list()}" style="margin-left: 20px"></h:commandButton>
+        </h:form>
+        <br></br> <br></br>
+        <h:panelGrid> 
+            
+                    <table class="order-table" style="width: 100%;text-align: center;margin-left: 295px">
 
+            <tr>
+                <th>
+                    <h4>To Do List</h4>
+                </th>
+                 <th>
+                    <h4> Kaldır </h4>
+                </th>
+            </tr>
+            <ui:repeat var="s" value="#{datadb_todo.toDo}">
 
+                <tr>
+                    <td style="width: 100px">
+                        <h:outputText value="#{s.content}"></h:outputText>
+                    </td>
+                    <h:form>
+                        <td style="width: 50px">
+                            <h:commandLink action="#{deleteupdate_todo.del_todo(s.toDo_id,1)}" > <i class='fa fa-close' style='font-size:20px;color:#818181'></i> </h:commandLink>               
+                        </td>
+                    </h:form>
+
+                </tr>
+
+            </ui:repeat>
+        </table>
+            
+            
+        </h:panelGrid>
     </h:body>
 </html>

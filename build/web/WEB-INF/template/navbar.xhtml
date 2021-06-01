@@ -4,12 +4,12 @@
         <a href="#plus" title="Yeni not" class="dropbtn"><i class="fa fa-plus-circle" style="font-size:32px;color:#96CDCD"></i></a>
         <div class="dropdown-content" >
             <a href="genel_not.xhtml">Genel not</a>
-            <a href="todo_list.xhtml">Liste notu</a>
+            <a href="#{datadb_todo.pull_todolist(1)}">Liste notu</a>
             <a href="haftalık.xhtml">Haftalık not</a>
         </div>
     </div>  <br></br>  <br></br>  <br></br>
     <a href="#{pushdata_db.pull_genel_not()}" title="Not sayfası" ><i class='far fa-file-alt' style='font-size:20px'></i></a>
-    <a href="todo_list.xhtml" title="To do list" ><i class='far fa-list-alt' style='font-size:20px'></i></a>
+    <a href="#{datadb_todo.pull_todolist(2)}" title="To do list" ><i class='far fa-list-alt' style='font-size:20px'></i></a>
     <a href="#{show_weeklyPlanners.days()}" title="List weekly" ><i class='far fa-calendar-alt' style='font-size:20px'></i></a>
     <a href="#{pushdata_db.push_trash()}" style="padding-top: 600%;color:#96CDCD" title="Çöp kutusu"><i class="fa fa-trash-o"></i></a>
 

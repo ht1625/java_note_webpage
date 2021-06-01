@@ -1,5 +1,12 @@
 
-public class user_data {
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean
+@SessionScoped
+//burası genel not almada silme ve update için oluşturduğum m class
+public class user_data implements Serializable {
 
     public int getUser_id() {
         return user_id;

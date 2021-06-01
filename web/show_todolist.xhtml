@@ -6,14 +6,13 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
 
-
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      >
     <h:head>
+        <meta name="description" content="#{ELBean.pageDescription}"/>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
         <style>
@@ -139,120 +138,73 @@
                 left: 100%;
                 top: 0;
             }
-            *{
-                margin: 0;
-                padding: 0;
+            table {
+                max-width: 850px;
+                max-height:auto;
+                margin-top: 15px;
             }
-            form,span{
-
-                margin-left: 150px;
-                width: 60%;
-                border: thin solid black;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-
-            }
-
-
-            input[type=button],input[type=text]{
-
-                margin: 0.25rem;
-            }
-            select{
-                max-width: 150px;
-                margin: 0.25rem;
-
-            }
-            h3,h4,h5,li{
+            th, td {
                 text-align: center;
-            }
-            .baslik{
-                background: url(images/logo.png) no-repeat 20% center/15%,url(images/pen.png) no-repeat 85% center/5%;
-                display: block;
-                width: 60%;
-                line-height: 60px;
-                border: thin solid black;
-                margin-left: 150px;
-                padding: 25px 0;
-                color: black;
-                font-weight: bolder;
-
+                padding: 8px;
             }
 
-            form>label{
-                border-right: thin solid black;
-                border-bottom: thin solid black;
+            tr:nth-child(even){background-color: #7D8493}
+
+            th {
+                background-color:#7D8493;
+                color: white;
             }
-
-
-
-            li img{
-                width: 1rem;
-                height: 1rem;
-                margin: 0 0.25rem;
-            }
-
         </style>
-
     </h:head>
 
-    <h:body style="background-color:#F5F5DC; padding-left:0px;padding-top: 60px">
-        <h:panelGrid>
+    <h:body style="background-color:#F5F5DC">
+
+        <h:panelGrid id="header">
+            <ui:insert name="header">
+                <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
+            </ui:insert>
 
 
-            <h:panelGrid>
-                <ui:insert >
-                    <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
-                </ui:insert>
-            </h:panelGrid>
-
-
-            <h:panelGrid>
-                <ui:insert >
-                    <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
-                </ui:insert>
-            </h:panelGrid>
-
-
+            <ui:insert name="header" >
+                <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
+            </ui:insert>
         </h:panelGrid>
 
-        <h3 class="baslik"> Yapılacaklar Listesine Ekle </h3>
-        <h:form id="formYapilacaklar" style="padding: 25px">
-
-            <h:inputText  value="#{getdata_todo.list_todo}" id="txtYapilacaklar" p:placeholder="writing....." style="background-color:#F0F0DF ;color:black" ></h:inputText> 
-            <h:commandButton  type="submit" value="Yapılacaklar Listesine Ekle" action="#{getdata_todo.get_todo_list()}" style="margin-left: 20px"></h:commandButton>
-        </h:form>
-        <br></br> <br></br>
-        <h:panelGrid> 
-            
-                    <table class="order-table" style="width: 100%;text-align: center;margin-left: 295px">
-
-            <tr>
-                <th>
-                    <h4>To Do List</h4>
-                </th>
-                 <th>
-                    <h4> Kaldır </h4>
-                </th>
-            </tr>
-            <ui:repeat var="s" value="#{datadb_todo.toDo}">
+        <h:panelGrid >
+            <table class="order-table" style="margin-right:400px;width: 100%;text-align: center;margin-left: 125px">
 
                 <tr>
-                    <td style="width: 100px">
-                        <h:outputText value="#{s.content}"></h:outputText>
-                    </td>
-                    <h:form>
-                        <td style="width: 50px">
-                            <h:commandLink action="#{deleteupdate_todo.del_todo(s.toDo_id,1)}" > <i class='fa fa-close' style='font-size:20px;color:#818181'></i> </h:commandLink>               
-                        </td>
-                    </h:form>
-
+                    <th>
+                        <h4>To Do List</h4>
+                    </th>
                 </tr>
 
-            </ui:repeat>
-        </table>
-            
-            
+                <ui:repeat var="s" value="#{datadb_todo.toDo}">
+
+                    <tr>
+                        <td>
+                            <h:outputText value="#{s.content}"></h:outputText>
+                        </td>
+                        <h:form>
+                            <td style="width: 50px">
+                                <h:commandLink action="#{deleteupdate_todo.del_todo(s.toDo_id,2)}" > Delete </h:commandLink>               
+                            </td>
+                        </h:form>
+                        <h:form>
+                            <td style="width: 50px">
+                                <h:commandLink action="#{deleteupdate_todo.upd_note_todo(s.toDo_id,s.content)}" > Edit </h:commandLink>   
+                            </td>
+                        </h:form>
+                    </tr>
+
+                </ui:repeat>
+
+            </table>
         </h:panelGrid>
+
+
+
+
+
     </h:body>
 </html>
