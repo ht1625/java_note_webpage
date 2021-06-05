@@ -155,17 +155,30 @@
                         document.getElementById('userName').value = responseText;
                     }
                 });
+                $.ajax({
+                    url: 'GetName',
+                    success: function (responseText) {
+                        document.getElementById('name').value = responseText;
+                    }
+                });
             }
         </script>
     </h:head>
 
     <h:body style="background-color:#FFE4B5" onload="functionToBeExecuted()">
 
-        <h:panelGrid style="padding-top:0px;">
+        <h:panelGrid style="padding-top:0px;width: 100%;margin-top: 0px">
 
-            <h:graphicImage style="width:1330px;height:600px;padding-top: 0px" value = "/images/img5.jpg"></h:graphicImage>
+            <h:graphicImage style="width:160%;height:auto;padding-top: 0px" value = "/images/img5.jpg"></h:graphicImage>
 
         </h:panelGrid>
+
+        <h:panelGrid>
+            <ui:insert >
+                <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
+            </ui:insert>
+        </h:panelGrid>
+
 
         <h:panelGrid>
             <ui:insert >
@@ -177,13 +190,6 @@
         <h:panelGrid>
             <ui:insert >
                 <ui:include src="/WEB-INF/template/navbar.xhtml" > </ui:include>
-            </ui:insert>
-        </h:panelGrid>
-
-
-        <h:panelGrid>
-            <ui:insert >
-                <ui:include src="/WEB-INF/template/slide_right.xhtml" > </ui:include>
             </ui:insert>
         </h:panelGrid>
 

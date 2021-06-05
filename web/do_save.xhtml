@@ -142,12 +142,12 @@
 
     </h:head>
 
-    <h:body style="background-color:#F5F5DC ; padding-left: 38%;padding-top: 8%">
+    <h:body style="background-color:gainsboro ; padding-left: 38%;padding-top: 8%">
 
-        <h:panelGrid style="background-color:#bad5ff;height: 450px;text-align:center;width:350px">
+        <h:panelGrid style="background-color:#00CED1;height: 450px;text-align:center;width:350px;border-radius: 6%;
+                     box-shadow: 10px 15px 28px gray inset;padding-top: 5px">
             <h:form>  
-                <h1>Save Page </h1>
-
+                <h2>Save Page </h2>
                 <h:outputLabel for="firstname" value="Name :"/>  
                 <h:inputText id="firstname" value="#{do_save.firstname}">  
                 </h:inputText><br/><br/>
@@ -155,9 +155,7 @@
                 <h:outputLabel for="surname" value="Surname :"/>  
                 <h:inputText id="surname" value="#{do_save.surname}">  
                 </h:inputText><br/><br/>
-                
-
-
+ 
                 <h:outputLabel for="username" value="Username :"/>  
                 <h:inputText id="username" value="#{do_save.username}">  
                 </h:inputText><br/><br/>
@@ -166,8 +164,8 @@
                 <h:inputSecret id="password" value="#{do_save.password}" >  
                 </h:inputSecret><br/><br/> 
 
-                <h:commandButton action="#{do_login.back_index()}" style="width: 100px;height: 30px" value="back"/> 
-                <h:commandButton action="#{do_save.save()}" style="width: 100px;height: 30px" value="save"/> 
+                <h:commandButton action="#{do_login.back_index()}" style="width: 100px;height: 30px" value="Back"/> 
+                <h:commandButton action="#{do_save.save()}" style="width: 100px;height: 30px;margin-left: 20px" value="Save"/> 
             </h:form>  
         </h:panelGrid>
 

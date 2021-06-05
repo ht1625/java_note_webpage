@@ -1,24 +1,14 @@
 
-import java.io.Serializable;
-import java.sql.ResultSet;
-
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
-import java.sql.Connection;
-
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
+import java.util.Calendar;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
 
-public class get_data  implements Serializable {
-   
-    
+public class get_data implements Serializable {
+
     public String getGenel_not() {
         return genel_not;
     }
@@ -38,8 +28,8 @@ public class get_data  implements Serializable {
     public String genel_not;
     public String title_genel_not;
 
-
-    public get_data()  {}
+    public get_data() {
+    }
 
     public void get_genel_note() throws Exception {
         if (!this.getGenel_not().equals("") && !this.getTitle_genel_not().equals("")) {
@@ -51,11 +41,14 @@ public class get_data  implements Serializable {
 
     public void save_genelnot() throws Exception {
         
-        db_connect conn = new db_connect();
-        conn.connection=conn.connect();
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date currentTime = calendar.getTime();
         
-        String query = "INSERT INTO GENEL_NOT (user_id,title_not,content_not) VALUES (" + user_data.user.getUser_id() + ",'" + this.getTitle_genel_not() + "','"
-                + this.getGenel_not() +"')";
+        db_connect conn = new db_connect();
+        conn.connection = conn.connect();
+
+        String query = "INSERT INTO GENEL_NOT (time,user_id,title_not,content_not) VALUES ("+currentTime+" , " + user_data.user.getUser_id() + ",'" + this.getTitle_genel_not() + "','"
+                + this.getGenel_not() + "')";
         int num = conn.stmt.executeUpdate(query);
         this.do_alert();
     }
