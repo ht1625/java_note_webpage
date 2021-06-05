@@ -40,14 +40,11 @@ public class get_data implements Serializable {
     }
 
     public void save_genelnot() throws Exception {
-        
-        Calendar calendar = Calendar.getInstance();
-        java.util.Date currentTime = calendar.getTime();
-        
+
         db_connect conn = new db_connect();
         conn.connection = conn.connect();
 
-        String query = "INSERT INTO GENEL_NOT (time,user_id,title_not,content_not) VALUES ("+currentTime+" , " + user_data.user.getUser_id() + ",'" + this.getTitle_genel_not() + "','"
+        String query = "INSERT INTO GENEL_NOT (user_id,title_not,content_not) VALUES ("+ user_data.user.getUser_id() + ",'" + this.getTitle_genel_not() + "','"
                 + this.getGenel_not() + "')";
         int num = conn.stmt.executeUpdate(query);
         this.do_alert();
