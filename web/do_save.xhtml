@@ -24,7 +24,11 @@
             }
 
         </style>
-
+        <script type="text/javascript">
+            function uyari(){
+                alert(Kayıt yapılmıştır. Lütfen giriş sayfasına gidin!);
+            }
+            </script>
     </h:head>
 
     <h:body style="background-color:gainsboro ; padding-left: 38%;padding-top: 8%">
@@ -50,7 +54,7 @@
                 </h:inputSecret><br/><br/> 
 
                 <h:commandButton action="#{do_login.back_index()}" style="width: 100px;height: 30px" value="Back"/> 
-                <h:commandButton action="#{do_save.save()}" style="width: 100px;height: 30px;margin-left: 20px" value="Save"/> 
+                <h:commandButton action="#{do_save.save()}" style="width: 100px;height: 30px;margin-left: 20px" value="Save" onclick="uyari()" /> 
             </h:form>  
         </h:panelGrid>
 
