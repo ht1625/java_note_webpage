@@ -152,7 +152,11 @@
                                     <h:commandLink action="#{sil_duzenle.do_back_dowland(o.note_id)}" >Geri Yükle </h:commandLink>               
                                 </td>
                             </h:form>
-
+                             <h:form>
+                                <td style="width: 100px">
+                                    <h:commandLink action="#{sil_duzenle.do_back_sil(o.note_id, 1)}" >Sil</h:commandLink>               
+                                </td>
+                            </h:form> 
                         </tr>
 
                     </ui:repeat>
@@ -189,6 +193,11 @@
                                 <td style="width: 100px">
                                     <h:commandLink action="#{sil_duzenle.do_back_week(week.weekly_id)}" >Geri Yükle </h:commandLink>               
                                 </td>                            
+                            </h:form>
+                            <h:form>
+                                <td style="width: 100px">
+                                    <h:commandLink action="#{sil_duzenle.do_back_sil(week.weekly_id, 2)}" >Sil</h:commandLink>               
+                                </td>
                             </h:form>
                         </tr>
                     </ui:repeat>

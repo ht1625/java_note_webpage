@@ -55,6 +55,22 @@ public class sil_duzenle implements Serializable {
         return "trash.xhtml";
     }
     
+     public String do_back_sil(int note_id,int sayac)throws Exception{
+        
+        db_connect conn = new db_connect();
+        conn.connection = conn.connect();
+        String query;
+        if(sayac==1){
+            query = "DELETE FROM GENEL_NOT  WHERE note_id = " + note_id;
+        }
+        else{
+            query = "DELETE FROM WEEKLY_PLANNER  WHERE weekly_id = " + note_id;
+        }
+        
+        int num = conn.stmt.executeUpdate(query);
+        return "trash.xhtml";
+    }
+    
     public String do_back_week(int note_id)throws Exception{
         
         db_connect conn = new db_connect();
