@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
@@ -15,7 +14,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-        <style>
+        <style src="bootstrap.css">
             body {font-family: "Lato", sans-serif;}
 
             .sidebar {
@@ -76,22 +75,6 @@
                 left: 100%;
                 top: 0;
             }
-            table {
-                max-width: 850px;
-                max-height:auto;
-                margin-top: 15px;
-            }
-            th, td {
-                text-align: center;
-                padding: 8px;
-            }
-
-            tr:nth-child(even){background-color: #7D8493}
-
-            th {
-                background-color:#7D8493;
-                color: white;
-            }
         </style>
     </h:head>
 
@@ -109,10 +92,10 @@
         </h:panelGrid>
 
         <h:panelGrid >
-            <table class="order-table" style="margin-right:400px;width: 100%;text-align: center;margin-left: 125px">
+            <table class="table table-bordered table-dark" style="margin-right:450px; margin-top:50px; width: 100%;text-align: center;margin-left: 125px">
 
                 <tr>
-                    <th>
+                    <th scope="col" style="text-align: center">
                         <h4>To Do List</h4>
                     </th>
                 </tr>
@@ -120,16 +103,16 @@
                 <ui:repeat var="s" value="#{datadb_todo.toDo}">
 
                     <tr>
-                        <td>
+                        <td scope="row">
                             <h:outputText value="#{s.content}"></h:outputText>
                         </td>
                         <h:form>
-                            <td style="width: 50px">
+                            <td style="width: 50px" scope="row">
                                 <h:commandLink action="#{deleteupdate_todo.del_todo(s.toDo_id,2)}" > Delete </h:commandLink>               
                             </td>
                         </h:form>
                         <h:form>
-                            <td style="width: 50px">
+                            <td style="width: 50px" scope="row">
                                 <h:commandLink action="#{deleteupdate_todo.upd_note_todo(s.toDo_id,s.content)}" > Edit </h:commandLink>   
                             </td>
                         </h:form>

@@ -65,7 +65,7 @@ public class do_login implements Serializable {
         this.pass = pass;
     }
     String pass;
-    private int size=0;
+    private int size = 0;
 
     public String loginn() throws Exception {
 
@@ -74,6 +74,7 @@ public class do_login implements Serializable {
 
         String query = "SELECT * FROM USERS WHERE USERNAME ='" + this.getUserName() + "' AND PASSWORD ='" + this.getPass() + "'";
         ResultSet rs = conn.stmt.executeQuery(query);
+
         if (rs.next()) {
             this.pull_home_content();
             int ide = rs.getInt("id");
@@ -85,10 +86,20 @@ public class do_login implements Serializable {
             user_data.user.setBirthday(rs.getString("birthday"));
             user_data.user.setPassword(rs.getString("password"));
             user_data.user.setUsername(rs.getString("username"));
-            user_data.user.setKaralama_not(rs.getString("karalama_notu"));
+            this.get_sticky();
             return "Home.xhtml";
         }
         return "index.xhtml";
+    }
+
+    public void get_sticky() throws Exception {
+        db_connect con = new db_connect();
+        con.connection = con.connect();
+        String query = "SELECT * FROM STICKY WHERE user_id = " + user_data.user.getUser_id();
+        ResultSet rs = con.stmt.executeQuery(query);
+        while (rs.next()) {
+            user_data.user.setKaralama_not(rs.getString("karalama_notu"));
+        }
     }
 
     public void pull_home_content() throws Exception {
@@ -98,7 +109,7 @@ public class do_login implements Serializable {
         ResultSet rs = con.stmt.executeQuery("select * from genel_not");
         ResultSetMetaData rsmd = rs.getMetaData();
         this.size = rsmd.getPrecision(1);
-  
+
     }
 
     public int size() {
@@ -117,7 +128,7 @@ public class do_login implements Serializable {
 
         db_connect conn = new db_connect();
         conn.connection = conn.connect();
-        String query = "UPDATE USERS SET karalama_notu = '" + user_data.user.getKaralama_not() + "' WHERE id = " + user_data.user.getUser_id();
+        String query = "UPDATE STICKY SET karalama_notu = '" + user_data.user.getKaralama_not() + "' WHERE user_id = " + user_data.user.getUser_id();
         int num = conn.stmt.executeUpdate(query);
 
         return "index.xhtml";
